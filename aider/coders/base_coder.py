@@ -736,7 +736,7 @@ class Coder:
                 live.start()
 
             for chunk in completion:
-                if chunk.choices[0].finish_reason == "length":
+                if "finish_reason" in chunk.choices[0] and chunk.choices[0].finish_reason == "length":
                     raise ExhaustedContextWindow()
 
                 try:
